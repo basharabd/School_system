@@ -22,4 +22,12 @@ class Grade extends Model
 
     protected $table="Grades";
     public $timestamps = true;
+
+
+    // علاقة المراحل الدراسية لجلب الاقسام المتعلقة بكل مرحلة
+
+    public function sections()
+    {
+        return $this->hasMany(Section::class, 'grade_id');
+    }
 }
