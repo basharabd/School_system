@@ -52,7 +52,7 @@ Route::group(
         Route::get('classes/{id}' , [SectionController::class , 'getclasses']);
 
 
-
+        Route::view('add_parent' , 'livewire.show_form');
         
     });
 
