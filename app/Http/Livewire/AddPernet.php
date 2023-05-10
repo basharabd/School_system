@@ -5,19 +5,24 @@ namespace App\Http\Livewire;
 use App\Models\Blood;
 use App\Models\Myparent;
 use App\Models\Nationalitie;
+use App\Models\ParentAttachment;
 use App\Models\Religion;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class AddPernet extends Component
 {
 
+    use WithFileUploads;
+
+
 
     public $successMessage = '';
 
-    public $catchError;
+    public $catchError,$updateMode=false , $photos , $show_table = true , $Parent_id;
     
-   public  $currentStep = 1,
+   public  $currentStep = 1 ,
    
         // Father_INPUTS
         $Email, $Password,
@@ -54,7 +59,12 @@ class AddPernet extends Component
             'Nationalities' => Nationalitie::all(),
             'Bloods' => Blood::all(),
             'Religions' => Religion::all(),
+            'my_parents' => Myparent::all(),
         ]);
+    }
+
+     public function showformadd(){
+        $this->show_table = false;
     }
 
         //firstStepSubmit
@@ -131,6 +141,17 @@ class AddPernet extends Component
             $My_Parent->Address_Mother = $this->Address_Mother;
 
             $My_Parent->save();
+
+            if (!empty($this->photos)){
+                foreach ($this->photos as $photo) {
+                    $photo->storeAs($this->National_ID_Father, $photo->getClientOriginalName(), $disk = 'parent_attachments');
+                    ParentAttachment::create([
+                        'file_name' => $photo->getClientOriginalName(),
+                        'parent_id' => Myparent::latest()->first()->id,
+                    ]);
+                }
+            }
+// dd(true);
             $this->successMessage = trans('message.success');
             $this->clearForm();
             $this->currentStep = 1;
@@ -143,6 +164,78 @@ class AddPernet extends Component
 
 
     }
+
+    public function edit($id)
+    {
+
+        $this->show_table = false;
+        $this->updateMode = true;
+        $My_Parent = Myparent::where('id',$id)->first();
+        $this->Parent_id = $id;
+        $this->Email = $My_Parent->Email;
+        $this->Password = $My_Parent->Password;
+        $this->Name_Father = $My_Parent->getTranslation('Name_Father', 'ar');
+        $this->Name_Father_en = $My_Parent->getTranslation('Name_Father', 'en');
+        $this->Job_Father = $My_Parent->getTranslation('Job_Father', 'ar');;
+        $this->Job_Father_en = $My_Parent->getTranslation('Job_Father', 'en');
+        $this->National_ID_Father =$My_Parent->National_ID_Father;
+        $this->Passport_ID_Father = $My_Parent->Passport_ID_Father;
+        $this->Phone_Father = $My_Parent->Phone_Father;
+        $this->Nationality_Father_id = $My_Parent->Nationality_Father_id;
+        $this->Blood_Type_Father_id = $My_Parent->Blood_Type_Father_id;
+        $this->Address_Father =$My_Parent->Address_Father;
+        $this->Religion_Father_id =$My_Parent->Religion_Father_id;
+
+        $this->Name_Mother = $My_Parent->getTranslation('Name_Mother', 'ar');
+        $this->Name_Mother_en = $My_Parent->getTranslation('Name_Father', 'en');
+        $this->Job_Mother = $My_Parent->getTranslation('Job_Mother', 'ar');;
+        $this->Job_Mother_en = $My_Parent->getTranslation('Job_Mother', 'en');
+        $this->National_ID_Mother =$My_Parent->National_ID_Mother;
+        $this->Passport_ID_Mother = $My_Parent->Passport_ID_Mother;
+        $this->Phone_Mother = $My_Parent->Phone_Mother;
+        $this->Nationality_Mother_id = $My_Parent->Nationality_Mother_id;
+        $this->Blood_Type_Mother_id = $My_Parent->Blood_Type_Mother_id;
+        $this->Address_Mother =$My_Parent->Address_Mother;
+        $this->Religion_Mother_id =$My_Parent->Religion_Mother_id;
+    }
+
+    //firstStepSubmit
+    public function firstStepSubmit_edit()
+    {
+
+        $this->updateMode = true;
+        $this->currentStep = 2;
+
+    }
+
+    //secondStepSubmit_edit
+    public function secondStepSubmit_edit()
+    {
+        $this->updateMode = true;
+        $this->currentStep = 3;
+
+    }
+
+    public function submitForm_edit(){
+
+        if ($this->Parent_id){
+            $parent = Myparent::find($this->Parent_id);
+            $parent->update([
+                'Passport_ID_Father' => $this->Passport_ID_Father,
+                'National_ID_Father' => $this->National_ID_Father,
+            ]);
+
+        }
+
+        return redirect()->to('/add_parent');
+    }
+
+    public function delete($id){
+        
+        Myparent::findOrFail($id)->delete();
+        return redirect()->to('/add_parent');
+    }
+
 
     //clearForm
     public function clearForm()
@@ -183,5 +276,9 @@ class AddPernet extends Component
     public function back($step)
     {
         $this->currentStep = $step;
+    }
+
+    public function updateMode(){
+        
     }
 }

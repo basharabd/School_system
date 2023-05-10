@@ -168,6 +168,11 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+        App\Providers\RepoServiceProvider::class,
+
+
+        
         Spatie\Translatable\TranslatableServiceProvider::class,
 
         Yoeunes\Toastr\ToastrServiceProvider::class,
