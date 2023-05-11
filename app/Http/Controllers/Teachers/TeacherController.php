@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Teachers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreTeacher;
+use App\Models\Gender;
+use App\Models\Specialization;
 use App\Repository\TeacherRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -15,67 +18,56 @@ class TeacherController extends Controller
 
     public function __construct(TeacherRepositoryInterface $Teacher)
     {
-
-        $this->Teacher = $Teacher;
-        
+        $this->Teacher = $Teacher; 
     }
 
-    /**
-     * Display a listing of the resource.
-     */
+ 
     public function index()
     {
-        
-
-       return $this->Teacher->getAllTeachers();
-
+        $Teachers = $this->Teacher->getAllTeachers();
+        return view('dashboard.Teachers.Teachers' ,compact('Teachers'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+   
     public function create()
     {
-        //
+        $specializations = $this->Teacher->getAllSpecializations();
+        $genders = $this->Teacher->getAllGenders();
+        return view('dashboard.Teachers.create' , compact('specializations' , 'genders'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+
+    public function store(StoreTeacher $request)
+    {
+
+        return $this->Teacher->StoreTeachers($request);
+        
+    }
+
+    public function show($id)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+   
+    public function edit($id)
     {
-        //
+        $Teachers = $this->Teacher->editTeachers($id);
+        $specializations = $this->Teacher->getAllSpecializations();
+        $genders = $this->Teacher->getAllGenders();
+        return view('dashboard.Teachers.Edit',compact('Teachers','specializations','genders'));    }
+
+   
+    public function update(Request $request)
+    {
+        return $this->Teacher->UpdateTeachers($request);
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+   
+    public function destroy(Request $request)
     {
-        //
-    }
+        return $this->Teacher->DeleteTeachers($request);
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 }

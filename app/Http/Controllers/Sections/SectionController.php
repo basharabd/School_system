@@ -7,6 +7,7 @@ use App\Http\Requests\StoreSection;
 use App\Models\Classroom;
 use App\Models\Grade;
 use App\Models\Section;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 
 class SectionController extends Controller
@@ -16,11 +17,15 @@ class SectionController extends Controller
      */
     public function index()
     {
+
+        // $teachers = Teacher::findOrFail(2);
+
+        // return $teachers->Sections;
       //  $Grades = Grade::with('sections')->get();
       $Grades = Grade::with('sections')->get();
         $list_Grades = Grade::all();
-       // $teachers = Teacher::all();
-        return view('dashboard.Sections.Sections',compact('Grades','list_Grades'));
+       $teachers = Teacher::all();
+        return view('dashboard.Sections.Sections',compact('Grades','list_Grades' , 'teachers'));
     }
 
     /**
@@ -36,6 +41,8 @@ class SectionController extends Controller
      */
     public function store(StoreSection $request)
     {
+
+        // dd($request->teacher_id);
         
         try {
 
@@ -46,7 +53,7 @@ class SectionController extends Controller
             $Sections->class_id = $request->class_id;
             $Sections->status = 1;
             $Sections->save();
-           // $Sections->teachers()->attach($request->teacher_id);
+           $Sections->teachers()->attach($request->teacher_id);
             toastr()->success(trans('message.success'));
       
             return redirect()->route('sections.index');

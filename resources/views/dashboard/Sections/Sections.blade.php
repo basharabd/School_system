@@ -165,7 +165,11 @@
                                                                                             {{ $Grade->name }}
                                                                                         </option>
                                                                                         @foreach($list_Grades as $list_Grade)
-                                                                                        <option value="{{ $list_Grade->id }}">{{ $list_Grade->name }} </option>
+                                                                                        
+                                                                                        <option
+                                                                                            value="{{ $list_Grade->id }}">
+                                                                                            {{ $list_Grade->name }}
+                                                                                        </option>
                                                                                         @endforeach
                                                                                     </select>
                                                                                 </div>
@@ -192,23 +196,19 @@
                                                                                 <div class="col">
                                                                                     <div class="form-check">
 
-                                                                                        @if ($list_Sections->status === 1)
-                                                                                        <input type="checkbox" checked
-                                                                                            class="form-check-input"
-                                                                                            name="status"
-                                                                                            id="exampleCheck1">
+                                                                                        @if ($list_Sections->status ===1)
+                                                                                        
+                                                                                        <input type="checkbox" checked class="form-check-input" name="status" id="exampleCheck1">
                                                                                         @else
-                                                                                        <input type="checkbox"
-                                                                                            class="form-check-input"
-                                                                                            name="status"
-                                                                                            id="exampleCheck1">
+                                                                                        <input type="checkbox" class="form-check-input"  name="status"  id="exampleCheck1">
+                                                                                            
                                                                                         @endif
                                                                                         <label class="form-check-label"
                                                                                             for="exampleCheck1">{{
                                                                                             trans('Sections_trans.Status')
                                                                                             }}</label><br>
 
-                                                                                        {{-- <div class="col">
+                                                                                        <div class="col">
                                                                                             <label for="inputName"
                                                                                                 class="control-label">{{
                                                                                                 trans('Sections_trans.Name_Teacher')
@@ -217,26 +217,25 @@
                                                                                                 name="teacher_id[]"
                                                                                                 class="form-control"
                                                                                                 id="exampleFormControlSelect2">
-                                                                                                @foreach($list_Sections->teachers
-                                                                                                as $teacher)
-
+                                                                                                @foreach($teachers as $teacher)
+                                                                                                
                                                                                                 <option selected
                                                                                                     value="{{$teacher['id']}}">
                                                                                                     {{$teacher['Name']}}
                                                                                                 </option>
                                                                                                 @endforeach
 
-                                                                                                @foreach($teachers as
-                                                                                                $teacher)
+                                                                                                @foreach($teachers as $teacher)
+                                                                                                
 
 
-                                                                                                <option
-                                                                                                    value="{{$teacher->id}}">
+                                                                                                <option value="{{$teacher->id}}">
+                                                                                                    
                                                                                                     {{$teacher->Name}}
                                                                                                 </option>
                                                                                                 @endforeach
                                                                                             </select>
-                                                                                        </div> --}}
+                                                                                        </div>
                                                                                     </div>
                                                                                 </div>
 
@@ -383,7 +382,7 @@
                                         </select>
                                     </div><br>
 
-                                    {{-- <div class="col">
+                                    <div class="col">
                                         <label for="inputName" class="control-label">{{
                                             trans('Sections_trans.Name_Teacher') }}</label>
                                         <select multiple name="teacher_id[]" class="form-control"
@@ -392,7 +391,7 @@
                                             <option value="{{$teacher->id}}">{{$teacher->Name}}</option>
                                             @endforeach
                                         </select>
-                                    </div> --}}
+                                    </div>
 
 
                             </div>
@@ -417,25 +416,25 @@
     @toastr_render
     <script>
         $(document).ready(function () {
-                    $('select[name="grade_id"]').on('change', function () {
-                        var grade_id = $(this).val();
-                        if (grade_id) {
-                            $.ajax({
-                                url: "{{ URL::to('classes') }}/" + grade_id,
-                                type: "GET",
-                                dataType: "json",
-                                success: function (data) {
-                                    $('select[name="class_id"]').empty();
-                                    $.each(data, function (key, value) {
-                                        $('select[name="class_id"]').append('<option value="' + key + '">' + value + '</option>');
-                                    });
-                                },
-                            });
-                        } else {
-                            console.log('AJAX load did not work');
-                        }
+                        $('select[name="grade_id"]').on('change', function () {
+                            var grade_id = $(this).val();
+                            if (grade_id) {
+                                $.ajax({
+                                    url: "{{ URL::to('classes') }}/" + grade_id,
+                                    type: "GET",
+                                    dataType: "json",
+                                    success: function (data) {
+                                        $('select[name="class_id"]').empty();
+                                        $.each(data, function (key, value) {
+                                            $('select[name="class_id"]').append('<option value="' + key + '">' + value + '</option>');
+                                        });
+                                    },
+                                });
+                            } else {
+                                console.log('AJAX load did not work');
+                            }
+                        });
                     });
-                });
     </script>
 
     @endsection
