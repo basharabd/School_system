@@ -206,7 +206,7 @@
                                                                                         <label class="form-check-label"
                                                                                             for="exampleCheck1">{{
                                                                                             trans('Sections_trans.Status')
-                                                                                            }}</label><br>
+                                                                                            }}</label><br> <br> <br>
 
                                                                                         <div class="col">
                                                                                             <label for="inputName"
@@ -217,7 +217,7 @@
                                                                                                 name="teacher_id[]"
                                                                                                 class="form-control"
                                                                                                 id="exampleFormControlSelect2">
-                                                                                                @foreach($teachers as $teacher)
+                                                                                                @foreach($list_Sections->teachers as $teacher)
                                                                                                 
                                                                                                 <option selected
                                                                                                     value="{{$teacher['id']}}">
@@ -226,14 +226,11 @@
                                                                                                 @endforeach
 
                                                                                                 @foreach($teachers as $teacher)
+                                                                                                <option value="{{$teacher->id}}">{{$teacher->Name}}</option>
+                                                                                                @endforeach
                                                                                                 
 
-
-                                                                                                <option value="{{$teacher->id}}">
-                                                                                                    
-                                                                                                    {{$teacher->Name}}
-                                                                                                </option>
-                                                                                                @endforeach
+     
                                                                                             </select>
                                                                                         </div>
                                                                                     </div>
