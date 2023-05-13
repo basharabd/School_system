@@ -5,6 +5,13 @@ namespace App\Repository;
 interface StudentRepositoryInterface
 {
 
+
+     // Edit_Student
+    public function Edit_Student($id);
+     
+    //Get Students
+    public function Get_Student();
+    
     // Create Student
     public function create_student();
     
@@ -16,6 +23,12 @@ interface StudentRepositoryInterface
 
     // Store Student
     public function Store_Student($request);
+    
+    // Update Student
+    public function Update_Student($request);
+
+     //Delete_Student
+     public function Delete_Student($request);
 
    
 

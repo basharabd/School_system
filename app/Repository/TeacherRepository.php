@@ -2,6 +2,7 @@
 namespace App\Repository;
 
 use App\Models\Gender;
+use App\Models\Image;
 use App\Models\Specialization;
 use App\Models\Teacher;
 use Exception;
@@ -38,6 +39,26 @@ class TeacherRepository implements TeacherRepositoryInterface{
         $Teachers->Joining_Date = $request->Joining_Date;
         $Teachers->Address = $request->Address;
         $Teachers->save();
+
+          // insert img
+          if($request->hasfile('photos'))
+          {
+              foreach($request->file('photos') as $file)
+              {
+                  $name = $file->getClientOriginalName();
+                  $file->storeAs('attachments/Teachers/'.$Teachers->Name_ar, $file->getClientOriginalName(),'upload_attachments');
+
+                  // insert in image_table
+                  $images= new Image();
+                  $images->filename=$name;
+                  $images->imageable_id= $Teachers->id;
+                  $images->imageable_type = 'App\Models\Teacher';
+                  $images->save();
+              }
+          }
+
+
+        
         toastr()->success(trans('message.success'));
         return redirect()->route('teacher.create');
     }

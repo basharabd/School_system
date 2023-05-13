@@ -18,10 +18,22 @@ class StudentController extends Controller
     {
         $this->Student = $Student; 
     }
+
+    public function Get_classrooms($id)
+    {
+       return $this->Student->Get_classrooms($id);
+    }
+
+    public function Get_Sections($id)
+    {
+        return $this->Student->Get_Sections($id);
+    }
   
     public function index()
     {
-        //
+
+        return $this->Student->Get_Student();
+       
     }
 
    
@@ -48,28 +60,25 @@ class StudentController extends Controller
    
     public function edit(string $id)
     {
-        //
+        return $this->Student->Edit_Student($id);
+
     }
 
   
-    public function update(Request $request, string $id)
+    public function update(StoreStudent $request)
     {
-        //
+        return $this->Student->Update_Student($request);
+
     }
 
     
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        return $this->Student->Delete_Student($request);
     }
 
-    public function Get_classrooms($id)
-    {
-       return $this->Student->Get_classrooms($id);
-    }
+  
 
-    public function Get_Sections($id)
-    {
-        return $this->Student->Get_Sections($id);
-    }
+
+    
 }

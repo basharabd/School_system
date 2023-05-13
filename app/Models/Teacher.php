@@ -30,4 +30,11 @@ class Teacher extends Model
     {
         return $this->belongsToMany(Section::class,'teacher_section');
     }
+
+    // علاقة بين المعلمين والصور لجلب اسم الصور  في جدول المعلمين
+
+   public function images()
+   {
+       return $this->morphMany(Image::class, 'imageable');
+   }
 }

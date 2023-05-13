@@ -21,10 +21,11 @@ class StoreStudent extends FormRequest
      */
     public function rules(): array
     {
+
         return [
             'name_ar' => 'required',
             'name_en' => 'required',
-            'email' => 'required|email|unique:students,email',
+            'email' => 'required|email|unique:students,email,'.$this->id,
             'password' => 'required|string|min:6|max:10',
             'gender_id' => 'required',
             'nationalitie_id' => 'required',

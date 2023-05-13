@@ -16,6 +16,8 @@ return [
     'students'=>'الطلاب',
     'add_student'=>'اضافة طالب جديد',
     'Teachers'=>'المعلمين',
+    'List_students' => 'قائمة الطلاب',
+
     'List_Teachers' => 'قائمة المعلمين',
     'Parents'=>'اولياء الامور',
     'List_Parents'=>'قائمة اولياء الامور',

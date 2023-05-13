@@ -32,7 +32,7 @@
                     <div class="col-xs-12">
                         <div class="col-md-12">
                             <br>
-                            <form action="{{route('teacher.store')}}" method="post">
+                            <form action="{{route('teacher.store')}}" method="post" enctype="multipart/form-data">
                              @csrf
                             <div class="form-row">
                                 <div class="col">
@@ -118,6 +118,14 @@
                                 @error('Address')
                                 <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
+                            </div>
+
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="academic_year">{{trans('Students_trans.Attachments')}} : <span class="text-danger">*</span></label>
+                                    <input type="file" accept="image/*" name="photos[]" multiple>
+                                </div>
                             </div>
 
                             <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" type="submit">{{trans('Parent_trans.Next')}}</button>
