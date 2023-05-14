@@ -17,6 +17,7 @@ return [
     'add_student'=>'اضافة طالب جديد',
     'Teachers'=>'المعلمين',
     'List_students' => 'قائمة الطلاب',
+    'Students_Promotions'=>'ترقية الطلاب',
 
     'List_Teachers' => 'قائمة المعلمين',
     'Parents'=>'اولياء الامور',
@@ -30,7 +31,8 @@ return [
     'Settings'=>'الاعدادات',
     'Users'=>'المستخدمين',
     'Copyright' => 'جميع الحقوق محفوظة ',
-    'Name_Programer' => 'سمير جمال مورا سوفت'
+    'Name_Programer' => 'سمير جمال مورا سوفت',
+    'Students_Promotions_Mangement'=>'إدارة ترقية الطلاب'
 
 
 ];

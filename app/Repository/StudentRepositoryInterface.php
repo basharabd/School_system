@@ -30,6 +30,22 @@ interface StudentRepositoryInterface
      //Delete_Student
      public function Delete_Student($request);
 
+
+     //Show Student Details
+     public function Show_Student($id);
+
+
+    //Upload_attachment
+     public function Upload_attachment($request);
+
+     
+    //Download_attachment
+     public function Download_attachment($studentsname,$filename);
+
+
+     //Delete_attachment
+    public function Delete_attachment($request);
+
    
 
 
