@@ -36,6 +36,13 @@ return [
     'Copyright' => 'Copyright',
     'Name_Programer' => 'SamirGamal MoraSoft All Rights Reserved',
     'Students_Promotions_Mangement'=>'Students Promotions Mangement',
+    'Student_information' => 'Student information',
+
+    'Students_Promotions'=>'Students Promotions',
+    'information_student'=>'Information Students',
+    'Students_upgrade'=>'Students Upgrade',
+    'Graduate_students'=>'Graduate Students',
+
 
 
 

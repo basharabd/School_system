@@ -32,7 +32,15 @@ return [
     'Users'=>'المستخدمين',
     'Copyright' => 'جميع الحقوق محفوظة ',
     'Name_Programer' => 'سمير جمال مورا سوفت',
-    'Students_Promotions_Mangement'=>'إدارة ترقية الطلاب'
+    'Students_Promotions_Mangement'=>'إدارة ترقية الطلاب',
+    'Student_information' => 'معلومات الطالب',
+
+    'Students_Promotions'=>'ترقية الطلاب',
+    'add_Promotion'=>'اضافة ترقية جديدة',
+    'list_Promotions'=>'قائمة الترقيات',
+    'Graduate_students'=>'الطلاب المتخرجين',
+    'add_Graduate'=>'اضافة تخرج جديد',
+
 
 
 ];

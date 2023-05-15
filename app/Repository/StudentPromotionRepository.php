@@ -72,4 +72,75 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
 
 
     }
-}
+
+    public function create()
+    {
+        $promotions = promotion::all();
+        return view('dashboard.Students.promotion.management',compact('promotions'));
+    }
+
+    public function destroy($request)
+    {
+        DB::beginTransaction();
+
+        try {
+
+            // التراجع عن الكل
+            if($request->page_id ==1){
+
+             $Promotions = Promotion::all();
+             foreach ($Promotions as $Promotion){
+
+                 //التحديث في جدول الطلاب
+                 $ids = explode(',',$Promotion->student_id);
+                 student::whereIn('id', $ids)
+                 ->update([
+                 'Grade_id'=>$Promotion->from_grade,
+                 'Classroom_id'=>$Promotion->from_Classroom,
+                 'section_id'=> $Promotion->from_section,
+                 'academic_year'=>$Promotion->academic_year,
+               ]);
+
+                 //حذف جدول الترقيات
+                 Promotion::truncate();
+
+             }
+                DB::commit();
+                toastr()->error(trans('messages.Delete'));
+                return redirect()->back();
+
+            }
+
+            else{
+
+                $Promotion = Promotion::findorfail($request->id);
+                student::where('id', $Promotion->student_id)
+                    ->update([
+                        'Grade_id'=>$Promotion->from_grade,
+                        'Classroom_id'=>$Promotion->from_Classroom,
+                        'section_id'=> $Promotion->from_section,
+                        'academic_year'=>$Promotion->academic_year,
+                    ]);
+
+
+                Promotion::destroy($request->id);
+                DB::commit();
+                toastr()->error(trans('message.Delete'));
+                return redirect()->back();
+
+            }
+
+        }
+
+        catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+    }
+
+     
+    }
+
+ 
+       
+    

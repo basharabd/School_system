@@ -33,8 +33,26 @@ return [
     'delete' => 'Delete',
 
     'Old_Grade' => 'Old Grade',
-
     'New_Grade' => 'New Grade',
+
+    'Old_Year' => 'Old Year',
+    'New_Year' => 'New Year',
+
+
+    'Old_Class' => 'Old Class',
+    'New_Class' => 'New Class',
+
+
+    'Old_Section' => 'Old Section',
+    'New_Section' => 'New Section',
+
+    'Back_all'=>'Back All',
+
+    'delete_all'=>'Are you sure that all students will be retracted?',
+
+
+
+
 
 
 
