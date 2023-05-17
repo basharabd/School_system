@@ -40,6 +40,9 @@ return [
     'list_Promotions'=>'قائمة الترقيات',
     'Graduate_students'=>'الطلاب المتخرجين',
     'add_Graduate'=>'اضافة تخرج جديد',
+    'list_Graduate'=>'قائمة التخرج',
+
+
 
 
 

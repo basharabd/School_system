@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Classroom\ClassroomController;
 use App\Http\Controllers\Grades\GradeController;
+use App\Http\Controllers\Graduated\GraduatedController;
 use App\Http\Controllers\Sections\SectionController;
 use App\Http\Controllers\Students\PromotionController;
 use App\Http\Controllers\Students\StudentController;
@@ -81,6 +82,9 @@ Route::group(
 
 
         Route::resource('promotion', PromotionController::class);
+
+        Route::resource('graduated', GraduatedController::class);
+
 
 
 

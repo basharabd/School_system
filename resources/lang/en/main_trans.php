@@ -42,6 +42,8 @@ return [
     'information_student'=>'Information Students',
     'Students_upgrade'=>'Students Upgrade',
     'Graduate_students'=>'Graduate Students',
+    'list_Graduate'=>'list Graduate',
+
 
 
 
