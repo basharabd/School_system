@@ -2,13 +2,13 @@
 @section('css')
     @toastr_css
 @section('title')
-    الرسوم الدراسية
+    سندات القبض
 @stop
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
 @section('PageTitle')
-    الرسوم الدراسية
+   سندات القبض
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -20,12 +20,10 @@
                 <div class="card-body">
                     <div class="col-xl-12 mb-30">
                         <div>
-                            <h3> الرسوم الدراسية</h3>
+                            <h3>سندات القبض</h3>
                         </div>
                         <div class="card card-statistics h-100">
                             <div class="card-body">
-                                <a href="{{route('fee.create')}}" class="btn btn-success btn-sm" role="button"
-                                   aria-pressed="true">اضافة رسوم جديدة</a><br><br>
                                 <div class="table-responsive">
                                     <table id="datatable" class="table  table-hover table-sm table-bordered p-0"
                                            data-page-length="50"
@@ -35,31 +33,23 @@
                                             <th>#</th>
                                             <th>الاسم</th>
                                             <th>المبلغ</th>
-                                            <th>المرحلة الدراسية</th>
-                                            <th>الصف الدراسي</th>
-                                            <th>السنة الدراسية</th>
-                                            <th>ملاحظات</th>
+                                            <th>البيان</th>
                                             <th>العمليات</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($fees as $fee)
+                                        @foreach($receipt_students as $receipt_student)
                                             <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{$fee->title}}</td>
-                                            <td>{{ number_format($fee->amount, 2) }}</td>
-                                            <td>{{$fee->grade->name}}</td>
-                                            <td>{{$fee->classroom->class_name}}</td>
-                                            <td>{{$fee->year}}</td>
-                                            <td>{{$fee->description}}</td>
+                                            <td>{{$receipt_student->student->name}}</td>
+                                            <td>{{ number_format($receipt_student->Debit, 2) }}</td>
+                                            <td>{{$receipt_student->description}}</td>
                                                 <td>
-                                                    <a href="{{route('fee.edit',$fee->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
-                                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#Delete_Fee{{ $fee->id }}" title="{{ trans('Grades_trans.Delete') }}"><i class="fa fa-trash"></i></button>
-                                                    <a href="#" class="btn btn-warning btn-sm" role="button" aria-pressed="true"><i class="far fa-eye"></i></a>
-
+                                                    <a href="{{route('receipt_students.edit',$receipt_student->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
+                                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#Delete_receipt{{$receipt_student->id}}" ><i class="fa fa-trash"></i></button>
                                                 </td>
                                             </tr>
-                                        @include('dashboard.Fees.delete')
+                                        @include('dashboard.Receipt.delete')
                                         @endforeach
                                     </table>
                                 </div>

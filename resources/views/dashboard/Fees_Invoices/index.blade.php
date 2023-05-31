@@ -19,6 +19,9 @@
             <div class="card card-statistics h-100">
                 <div class="card-body">
                     <div class="col-xl-12 mb-30">
+                        <div>
+                            <h3>الفواتير الدراسية</h3>
+                        </div>
                         <div class="card card-statistics h-100">
                             <div class="card-body">
                                 <div class="table-responsive">

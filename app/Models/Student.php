@@ -65,4 +65,11 @@ class Student extends Model
     {
         return $this->belongsTo(Myparent::class, 'parent_id');
     }
+
+       // علاقة بين جدول سدادت الطلاب وجدول الطلاب لجلب اجمالي المدفوعات والمتبقي
+       public function student_account()
+       {
+           return $this->hasMany(StudentAccount::class, 'student_id');
+   
+       }
 }

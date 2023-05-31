@@ -6,7 +6,9 @@ use App\Http\Controllers\Graduated\GraduatedController;
 use App\Http\Controllers\Sections\SectionController;
 use App\Http\Controllers\Students\FeeController;
 use App\Http\Controllers\Students\FeesInvoicesController;
+use App\Http\Controllers\Students\ProcessingFeeController;
 use App\Http\Controllers\Students\PromotionController;
+use App\Http\Controllers\Students\ReceiptStudentsController;
 use App\Http\Controllers\Students\StudentController;
 use App\Http\Controllers\Teachers\TeacherController;
 use Illuminate\Support\Facades\Auth;
@@ -92,9 +94,11 @@ Route::group(
         Route::resource('Fees_Invoices', FeesInvoicesController::class);
 
 
+        Route::resource('receipt_students', ReceiptStudentsController::class);
 
 
 
+        Route::resource('ProcessingFee', ProcessingFeeController::class);
 
 
 

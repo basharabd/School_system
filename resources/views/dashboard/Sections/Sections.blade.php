@@ -16,6 +16,9 @@
 <!-- row -->
 <div class="row">
     <div class="col-md-12 mb-30">
+        <div>
+            <h3>الاقسام</h3>
+        </div>
         <div class="card card-statistics h-100">
             <div class="card-body">
                 <a class="button x-small" href="#" data-toggle="modal" data-target="#exampleModal">
