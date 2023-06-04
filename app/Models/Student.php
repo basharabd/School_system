@@ -72,4 +72,10 @@ class Student extends Model
            return $this->hasMany(StudentAccount::class, 'student_id');
    
        }
+
+          // علاقة بين جدول الطلاب وجدول الحضور والغياب
+    public function attendance()
+    {
+        return $this->hasMany(Attendance::class, 'student_id');
+    }
 }

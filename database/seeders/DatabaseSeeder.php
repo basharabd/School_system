@@ -34,6 +34,8 @@ class DatabaseSeeder extends Seeder
         $this->call(StoreGender::class);
         $this->call(ParentsTableSeeder::class);
         $this->call(StudentsTableSeeder::class);
+        $this->call(SettingsTableSeeder::class);
+
 
 
 
