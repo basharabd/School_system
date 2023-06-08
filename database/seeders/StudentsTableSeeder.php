@@ -25,7 +25,7 @@ class StudentsTableSeeder extends Seeder
         $students = new Student();
         $students->name = ['ar' => 'احمد ابراهيم', 'en' => 'Ahmed Ibrahim'];
         $students->email = 'Ahmed_Ibrahim@yahoo.com';
-        $students->password = Hash::make('12345678');
+        $students->password = Hash::make('password');
         $students->gender_id = 1;
         $students->nationalitie_id = Nationalitie::all()->unique()->random()->id;
         $students->blood_id =Blood::all()->unique()->random()->id;

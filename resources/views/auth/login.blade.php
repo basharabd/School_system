@@ -83,7 +83,7 @@
     <meta name="description" content="Webmin - Bootstrap 4 & Angular 5 Admin Dashboard Template" />
     <meta name="author" content="potenzaglobalsolutions.com" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <title> Shcool System </title>
+    <title>برنامج مورا سوفت لادارة المدارس</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="images/favicon.ico" />
@@ -189,6 +189,7 @@
     <!-- plugin_path -->
     <script>
         var plugin_path = 'js/';
+
     </script>
 
     <!-- chart -->

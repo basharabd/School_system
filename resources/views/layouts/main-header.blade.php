@@ -33,7 +33,7 @@ header start-->
             <button type="button" class="btn btn-light btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               @if (App::getLocale() == 'ar')
               {{ LaravelLocalization::getCurrentLocaleName() }}
-             <img src="{{ URL::asset('assets/images/flags/SA.png') }}" alt="">
+             <img src="{{ URL::asset('assets/images/flags/EG.png') }}" alt="">
               @else
               {{ LaravelLocalization::getCurrentLocaleName() }}
               <img src="{{ URL::asset('assets/images/flags/US.png') }}" alt="">
@@ -104,9 +104,9 @@ header start-->
         <li class="nav-item dropdown mr-30">
             <a class="nav-link nav-pill user-avatar" data-toggle="dropdown" href="#" role="button"
                 aria-haspopup="true" aria-expanded="false">
-                <img src="{{ URL::asset('assets/images/team/14.jpg') }}" alt="avatar">
+                <img src="{{ URL::asset('assets/images/user_icon.png') }}" alt="avatar">
 
-                {{-- 'assets/images/user_icon.png' --}}
+
             </a>
             <div class="dropdown-menu dropdown-menu-right">
                 <div class="dropdown-header">
@@ -125,7 +125,7 @@ header start-->
                         class="badge badge-info">6</span> </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#"><i class="text-info ti-settings"></i>Settings</a>
-                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="text-danger ti-unlock"></i>{{ __('side_trans.Logout') }}</a>
+                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="text-danger ti-unlock"></i>{{ __('Sidebar_trans.Logoff') }}</a>
                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                   @csrf
                 </form>
@@ -133,3 +133,6 @@ header start-->
         </li>
     </ul>
 </nav>
+
+<!--=================================
+header End-->

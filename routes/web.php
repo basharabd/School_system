@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Classroom\ClassroomController;
 use App\Http\Controllers\Exams\ExamController;
 use App\Http\Controllers\Grades\GradeController;
 use App\Http\Controllers\Graduated\GraduatedController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Librarys\LibraryController;
 use App\Http\Controllers\Questions\QuestionController;
 use App\Http\Controllers\Quizzes\QuizzController;
@@ -40,6 +42,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 
+
 Route::group(['middleware' =>'guest'] , function(){
     Route::get('/', function () {
         return view('auth.login');
@@ -53,10 +56,10 @@ Route::group(['middleware' =>'guest'] , function(){
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
+        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath','auth']
     ], function(){ 
    
-        Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
+        Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('dashboard');
 
         Route::resource('grads', GradeController::class);
 
@@ -110,5 +113,6 @@ Route::group(
 
 
 
-        
+       
+    
     });
